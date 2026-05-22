@@ -2,7 +2,7 @@
 title: "Crema de calabacín"
 descripcion: "Crema suave de calabacín con un toque de queso de cabra. Entrante ligero y cremoso."
 categoria: "entrante"
-imagen: 'https://picsum.photos/seed/crema-calabacin/800/400'
+imagen: 'https://images.unsplash.com/photo-C9GB-cCSRsM?w=800&h=400&fit=crop'
 tiempo: "30 min"
 porciones: 4
 dificultad: "muy fácil"

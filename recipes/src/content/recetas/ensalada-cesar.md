@@ -2,7 +2,7 @@
 title: "Ensalada césar"
 descripcion: "Clásico de bar. Crujiente, salado, contundente. Buena para practicar commits separados."
 categoria: "entrante"
-imagen: 'https://picsum.photos/seed/ensalada-cesar/800/400'
+imagen: 'https://images.unsplash.com/photo-UdLsLK_KFLw?w=800&h=400&fit=crop'
 tiempo: "20 min"
 porciones: 2
 dificultad: "fácil"

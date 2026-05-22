@@ -2,7 +2,7 @@
 title: "Churros con chocolate"
 descripcion: "Masa frita crujiente servida con chocolate espeso para mojar. El desayuno de los domingos."
 categoria: "postre"
-imagen: 'https://picsum.photos/seed/churros/800/400'
+imagen: 'https://images.unsplash.com/photo-7tjW_OsOzmY?w=800&h=400&fit=crop'
 tiempo: "30 min"
 porciones: 4
 dificultad: "media"

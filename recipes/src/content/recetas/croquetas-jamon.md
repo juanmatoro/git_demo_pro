@@ -2,7 +2,7 @@
 title: "Croquetas de jamón"
 descripcion: "Crema bechamel con jamón serrano, rebozada y frita. Un clásico de la cocina española."
 categoria: "entrante"
-imagen: 'https://picsum.photos/seed/croquetas-jamon/800/400'
+imagen: 'https://images.unsplash.com/photo-IV5RVSIJe_g?w=800&h=400&fit=crop'
 tiempo: "60 min + reposo"
 porciones: 6
 dificultad: "media"

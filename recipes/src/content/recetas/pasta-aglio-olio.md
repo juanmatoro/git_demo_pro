@@ -2,7 +2,7 @@
 title: "Pasta aglio e olio"
 descripcion: "Plato italiano minimalista: ajo, aceite, pasta. Ideal para una cena rápida."
 categoria: "principal"
-imagen: 'https://picsum.photos/seed/pasta-aglio-olio/800/400'
+imagen: 'https://images.unsplash.com/photo-KGKvndilBFo?w=800&h=400&fit=crop'
 tiempo: "15 min"
 porciones: 2
 dificultad: "muy fácil"
