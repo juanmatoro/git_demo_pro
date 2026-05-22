@@ -2,6 +2,7 @@
 import Layout from '../layouts/Layout.astro';
 import { getCollection } from 'astro:content';
 
+const base = import.meta.env.BASE_URL;
 const recetas = await getCollection('recetas', ({ data }) => data.publicado);
 const recetasById = new Map(recetas.map((r) => [r.id, r]));
 
@@ -50,7 +51,7 @@ const menus: Menu[] = [
             }
             return (
               <li>
-                <a href={`/recetas/${receta.id}`}>{receta.data.title}</a>
+                <a href={`${base}/recetas/${receta.id}`}>{receta.data.title}</a>
                 <span class="meta">{receta.data.tiempo} &middot; {receta.data.dificultad}</span>
               </li>
             );

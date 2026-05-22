@@ -1,5 +1,7 @@
 import { useState, useEffect } from 'preact/hooks';
 
+const base = import.meta.env.BASE_URL;
+
 export default function BuscadorRecetas({ recetas }) {
   const [query, setQuery] = useState('');
   const [categoria, setCategoria] = useState('');
@@ -36,7 +38,7 @@ export default function BuscadorRecetas({ recetas }) {
         <ul>
           {filtradas.map((r) => (
             <li key={r.slug}>
-              <a href={`/recetas/${r.slug}`}>{r.title}</a>
+              <a href={`${base}/recetas/${r.slug}`}>{r.title}</a>
               <span class="cat"> · {r.categoria}</span>
             </li>
           ))}

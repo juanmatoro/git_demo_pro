@@ -1,6 +1,8 @@
 ---
 import Layout from './Layout.astro';
 
+const base = import.meta.env.BASE_URL;
+
 interface Props {
   title: string;
   descripcion: string;
@@ -16,7 +18,7 @@ const { title, descripcion, categoria, tiempo, porciones, dificultad, tags } = A
 
 <Layout title={title} descripcion={descripcion}>
   <article class="receta">
-    <a href="/recetas" class="volver">&larr; volver a recetas</a>
+    <a href={`${base}/recetas`} class="volver">&larr; volver a recetas</a>
 
     <header class="receta-header">
       <h1>{title}</h1>
