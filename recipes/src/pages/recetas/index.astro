@@ -1,105 +1,38 @@
 ---
 import Layout from '../../layouts/Layout.astro';
 import { getCollection } from 'astro:content';
+import FiltroCategoria from '../../components/FiltroCategoria.jsx';
+import BuscadorRecetas from '../../components/BuscadorRecetas.jsx';
 
-const recetas = await getCollection('recetas', ({ data }) => data.publicado);
+const todas = await getCollection('recetas', ({ data }) => data.publicado);
 
-const porCategoria = recetas.reduce((acc, receta) => {
-  const cat = receta.data.categoria;
-  if (!acc[cat]) acc[cat] = [];
-  acc[cat].push(receta);
-  return acc;
-}, {} as Record<string, typeof recetas>);
+const categorias = [...new Set(todas.map((r) => r.data.categoria))].sort();
 
-const categoriasOrdenadas = Object.keys(porCategoria).sort();
+const recetas = todas.map((r) => ({
+  slug: r.id.replace(/\.md$/, ''),
+  title: r.data.title,
+  categoria: r.data.categoria,
+  tags: r.data.tags,
+}));
 ---
 
 <Layout title="Recetas">
   <header>
     <h1>Todas las recetas</h1>
-    <p>{recetas.length} recetas publicadas, agrupadas por categoría.</p>
+    <p>{todas.length} recetas publicadas.</p>
   </header>
 
-  {categoriasOrdenadas.map((categoria) => (
-    <section class="categoria">
-      <h2>{categoria}</h2>
-      <ul class="grid">
-        {porCategoria[categoria].map((receta) => (
-          <li class="card">
-            <a href={`/recetas/${receta.id}`}>
-              <h3>{receta.data.title}</h3>
-              <p class="desc">{receta.data.descripcion}</p>
-              <div class="meta">
-                <span>{receta.data.tiempo}</span>
-                <span>&middot;</span>
-                <span>{receta.data.dificultad}</span>
-                <span>&middot;</span>
-                <span>{receta.data.porciones} porciones</span>
-              </div>
-            </a>
-          </li>
-        ))}
-      </ul>
-    </section>
-  ))}
+  <section class="controles">
+    <FiltroCategoria categorias={categorias} client:load />
+    <BuscadorRecetas recetas={recetas} client:load />
+  </section>
 </Layout>
 
 <style>
-  .categoria {
-    margin-bottom: 28px;
-  }
-
-  .categoria h2 {
-    color: #5a3a1f;
-    border-left: 4px solid #c97b3c;
-    padding-left: 10px;
-    text-transform: capitalize;
-  }
-
-  .grid {
-    list-style: none;
-    padding: 0;
-    margin: 0;
-    display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
-    gap: 14px;
-  }
-
-  .card {
-    background: #fff;
-    border: 1px solid #e6dfd2;
-    border-radius: 6px;
-    transition: border-color 0.15s, transform 0.15s;
-  }
-
-  .card:hover {
-    border-color: #c97b3c;
-    transform: translateY(-2px);
-  }
-
-  .card a {
-    display: block;
-    padding: 14px 16px;
-    text-decoration: none;
-    color: inherit;
-  }
-
-  .card h3 {
-    margin: 0 0 6px;
-    color: #c97b3c;
-  }
-
-  .desc {
-    color: #6b6b6b;
-    font-size: 0.9rem;
-    margin: 0 0 10px;
-  }
-
-  .meta {
-    font-size: 0.8rem;
-    color: #888;
+  .controles {
     display: flex;
-    gap: 6px;
-    flex-wrap: wrap;
+    flex-direction: column;
+    gap: 16px;
+    margin-bottom: 28px;
   }
 </style>
