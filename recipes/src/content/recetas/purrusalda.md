@@ -2,7 +2,7 @@
 title: "Purrusalda"
 descripcion: "Guiso de puerros y patatas con bacalao. Plato humilde y reconfortante del País Vasco."
 categoria: "principal"
-imagen: 'https://images.unsplash.com/photo-DhCXK1Q1VPk?w=800&h=400&fit=crop'
+imagen: 'https://images.pexels.com/photos/35408993/pexels-photo-35408993.jpeg?auto=compress&cs=tinysrgb&w=800&h=400&fit=crop'
 tiempo: "45 min"
 porciones: 4
 dificultad: "fácil"

@@ -2,7 +2,7 @@
 title: "Fabada asturiana"
 descripcion: "Potaje de fabes con compango. El guiso más contundente de la cocina asturiana."
 categoria: "principal"
-imagen: 'https://images.unsplash.com/photo-lrtfNWl3dsE?w=800&h=400&fit=crop'
+imagen: 'https://images.pexels.com/photos/9295691/pexels-photo-9295691.jpeg?auto=compress&cs=tinysrgb&w=800&h=400&fit=crop'
 tiempo: "120 min + remojo"
 porciones: 6
 dificultad: "fácil"

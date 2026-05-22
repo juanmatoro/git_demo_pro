@@ -2,7 +2,7 @@
 title: "Salmorejo cordobés"
 descripcion: "Crema espesa de tomate con pan, aliñada con aceite, jamón y huevo duro. El primo denso del gazpacho."
 categoria: "entrante"
-imagen: 'https://images.unsplash.com/photo-z8KoUDM_uCw?w=800&h=400&fit=crop'
+imagen: 'https://images.pexels.com/photos/12675815/pexels-photo-12675815.jpeg?auto=compress&cs=tinysrgb&w=800&h=400&fit=crop'
 tiempo: "15 min + reposo"
 porciones: 4
 dificultad: "muy fácil"

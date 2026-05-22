@@ -2,7 +2,7 @@
 title: "Lasagna alla bolognese"
 descripcion: "Capas de pasta, ragú de carne, bechamel y parmesano. El horno italiano por excelencia."
 categoria: "principal"
-imagen: 'https://images.unsplash.com/photo-flEUTTwGlJQ?w=800&h=400&fit=crop'
+imagen: 'https://images.pexels.com/photos/17881598/pexels-photo-17881598.jpeg?auto=compress&cs=tinysrgb&w=800&h=400&fit=crop'
 tiempo: "90 min"
 porciones: 6
 dificultad: "media"

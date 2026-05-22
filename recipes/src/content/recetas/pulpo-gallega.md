@@ -2,7 +2,7 @@
 title: "Pulpo a la gallega"
 descripcion: "Pulpo cocido con pimentón, aceite y sal gorda. La tapa más universal de Galicia."
 categoria: "principal"
-imagen: 'https://images.unsplash.com/photo-0ezL9Nd679Q?w=800&h=400&fit=crop'
+imagen: 'https://images.pexels.com/photos/5986729/pexels-photo-5986729.jpeg?auto=compress&cs=tinysrgb&w=800&h=400&fit=crop'
 tiempo: "50 min"
 porciones: 4
 dificultad: "media"

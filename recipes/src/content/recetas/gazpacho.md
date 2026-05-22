@@ -2,7 +2,7 @@
 title: "Gazpacho"
 descripcion: "Sopa fría de tomate, pepino y pimiento. El refresco andaluz por excelencia."
 categoria: "entrante"
-imagen: 'https://images.unsplash.com/photo-gCf8_ceCbJM?w=800&h=400&fit=crop'
+imagen: 'https://images.pexels.com/photos/34326259/pexels-photo-34326259.jpeg?auto=compress&cs=tinysrgb&w=800&h=400&fit=crop'
 tiempo: "15 min + reposo"
 porciones: 4
 dificultad: "muy fácil"

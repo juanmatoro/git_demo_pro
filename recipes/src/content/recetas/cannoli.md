@@ -2,7 +2,7 @@
 title: "Cannoli siciliani"
 descripcion: "Cestillos de masa frita rellenos de ricotta dulce con pepitas de chocolate. Un mordisco a Sicilia."
 categoria: "postre"
-imagen: 'https://images.unsplash.com/photo-x5pCKv-J9hs?w=800&h=400&fit=crop'
+imagen: 'https://images.pexels.com/photos/31372529/pexels-photo-31372529.jpeg?auto=compress&cs=tinysrgb&w=800&h=400&fit=crop'
 tiempo: "50 min + reposo"
 porciones: 12
 dificultad: "difícil"

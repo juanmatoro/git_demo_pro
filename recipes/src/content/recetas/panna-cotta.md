@@ -2,7 +2,7 @@
 title: "Panna cotta"
 descripcion: "Nata cocida con vainilla y gelatina, servida con coulis de frutos rojos. Sencillez italiana."
 categoria: "postre"
-imagen: 'https://images.unsplash.com/photo-Be9SKul_w44?w=800&h=400&fit=crop'
+imagen: 'https://images.pexels.com/photos/5640039/pexels-photo-5640039.jpeg?auto=compress&cs=tinysrgb&w=800&h=400&fit=crop'
 tiempo: "20 min + reposo"
 porciones: 6
 dificultad: "fácil"

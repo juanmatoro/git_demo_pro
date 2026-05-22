@@ -2,7 +2,7 @@
 title: "Crema catalana"
 descripcion: "Natillas con canela y corteza de naranja, caramelizadas con azúcar por encima. La abuela catalana."
 categoria: "postre"
-imagen: 'https://images.unsplash.com/photo-PerJ_q-EuKw?w=800&h=400&fit=crop'
+imagen: 'https://images.pexels.com/photos/36782571/pexels-photo-36782571.jpeg?auto=compress&cs=tinysrgb&w=800&h=400&fit=crop'
 tiempo: "40 min + reposo"
 porciones: 4
 dificultad: "media"

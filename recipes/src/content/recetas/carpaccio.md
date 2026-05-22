@@ -2,7 +2,7 @@
 title: "Carpaccio de ternera"
 descripcion: "Finas láminas de solomillo crudo aliñadas con limón, parmesano y rúcula."
 categoria: "entrante"
-imagen: 'https://images.unsplash.com/photo-4XRd2uw99V0?w=800&h=400&fit=crop'
+imagen: 'https://images.pexels.com/photos/26932238/pexels-photo-26932238.jpeg?auto=compress&cs=tinysrgb&w=800&h=400&fit=crop'
 tiempo: "15 min + reposo"
 porciones: 4
 dificultad: "fácil"
