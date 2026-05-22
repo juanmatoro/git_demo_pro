@@ -1,10 +1,10 @@
 ---
-title: "Ensalada cesar"
-descripcion: "Clasico de bar. Crujiente, salado, contundente. Buena para practicar commits separados."
+title: "Ensalada césar"
+descripcion: "Clásico de bar. Crujiente, salado, contundente. Buena para practicar commits separados."
 categoria: "entrante"
 tiempo: "20 min"
 porciones: 2
-dificultad: "facil"
+dificultad: "fácil"
 tags: ["ensalada", "pollo", "queso"]
 ---
 
@@ -18,13 +18,13 @@ tags: ["ensalada", "pollo", "queso"]
 - 1 taza de crutones
 - Sal y pimienta
 
-### Para la salsa cesar
+### Para la salsa césar
 
 - 2 yemas de huevo
 - 1 cucharadita de mostaza Dijon
 - 2 anchoas
 - 1 diente de ajo
-- 1 cucharada de jugo de limon
+- 1 cucharada de jugo de limón
 - 100 ml de aceite de oliva
 - 2 cucharadas de parmesano rallado
 
@@ -34,7 +34,7 @@ tags: ["ensalada", "pollo", "queso"]
 2. Lavar y trocear la lechuga romana en hojas grandes.
 3. En un bol, batir las yemas con la mostaza, el ajo machacado y las anchoas.
 4. Agregar el aceite en hilo fino mientras se bate, hasta emulsionar.
-5. Agregar limon y parmesano rallado. Probar y ajustar de sal.
+5. Agregar limón y parmesano rallado. Probar y ajustar de sal.
 6. Cortar el pollo en tiras.
 7. En una fuente, distribuir la lechuga, el pollo, los crutones y las lascas de parmesano.
 8. Salsear por encima al momento de servir.

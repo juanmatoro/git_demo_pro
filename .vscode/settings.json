@@ -1,5 +1,12 @@
 {
     "files.exclude": {
         "**/.git": false
-    }
+    },
+    "cSpell.words": [
+        "logueado",
+        "prerender",
+        "renderiza",
+        "renderizada",
+        "renderizado"
+    ]
 }

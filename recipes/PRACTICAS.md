@@ -1,10 +1,10 @@
-# Practicas de Git con el Recetario
+# Prácticas de Git con el Recetario
 
-Este recetario es el sandbox real para ejecutar los modulos del [README principal](../README.md). En vez de practicar con archivos abstractos `archivo1.txt`, vas a editar recetas, agregar postres, resolver conflictos de "con cebolla o sin cebolla" y publicar versiones de tu libro de cocina.
+Este recetario es el sandbox real para ejecutar los módulos del [README principal](../README.md). En vez de practicar con archivos abstractos `archivo1.txt`, vas a editar recetas, agregar postres, resolver conflictos de "con cebolla o sin cebolla" y publicar versiones de tu libro de cocina.
 
-> Recordatorio del README: si rompes algo, no borres el repo. Resuelvelo con Git. Ese es el verdadero ejercicio.
+> Recordatorio del README: si rompes algo, no borres el repo. Resuélvelo con Git. Ese es el verdadero ejercicio.
 
-## Como esta montado el sandbox
+## Cómo está montado el sandbox
 
 El recetario es una mini-app hecha con **Astro** (sobre Vite) que lee las recetas directamente desde archivos Markdown. Estructura clave:
 
@@ -12,14 +12,14 @@ El recetario es una mini-app hecha con **Astro** (sobre Vite) que lee las receta
 recipes/
 ├── package.json              # dependencias y scripts
 ├── astro.config.mjs
-├── PRACTICAS.md              # esta guia
+├── PRACTICAS.md              # esta guía
 └── src/
     ├── content/
     │   ├── config.ts         # schema (frontmatter requerido)
-    │   └── recetas/          # ← aqui van tus .md
+    │   └── recetas/          # ← aquí van tus .md
     ├── pages/                # rutas del sitio (index, recetas, menus, practicas)
     ├── layouts/              # plantillas
-    ├── components/           # Nav.astro (menu superior)
+    ├── components/           # Nav.astro (menú superior)
     └── styles/
 ```
 
@@ -29,7 +29,7 @@ recipes/
 cd recipes
 npm install                   # solo la primera vez
 npm run dev                   # arranca en http://localhost:4321
-npm run build                 # genera dist/ estatica
+npm run build                 # genera dist/ estática
 npm run preview               # sirve dist/ para verificar
 ```
 
@@ -37,16 +37,16 @@ npm run preview               # sirve dist/ para verificar
 
 ### Frontmatter requerido en cada receta
 
-Cada receta debe empezar con este bloque YAML para pasar la validacion del schema en `src/content/config.ts`:
+Cada receta debe empezar con este bloque YAML para pasar la validación del schema en `src/content/config.ts`:
 
 ```yaml
 ---
 title: "Nombre de la receta"
-descripcion: "Una linea que la describe."
+descripcion: "Una línea que la describe."
 categoria: "principal"     # entrante | principal | postre | bebida | desayuno
 tiempo: "30 min"
 porciones: 4
-dificultad: "facil"        # muy facil | facil | media | dificil
+dificultad: "fácil"        # muy fácil | fácil | media | difícil
 tags: ["tag1", "tag2"]
 ---
 ```
@@ -55,29 +55,29 @@ Si te falta un campo o usas un valor fuera de los enum, `npm run build` falla. *
 
 ---
 
-## Mapa de practicas por modulo
+## Mapa de prácticas por módulo
 
-| Modulo del README | Que vas a hacer aqui |
+| Módulo del README | Qué vas a hacer aquí |
 | --- | --- |
 | [1) Fundamentos del repositorio](../README.md#1-fundamentos-del-repositorio) | Crear una receta nueva, ver las 3 zonas |
-| [2) Historial y exploracion](../README.md#2-historial-y-exploracion) | Modificar `tortilla-de-patatas.md` y leer el historial |
+| [2) Historial y exploración](../README.md#2-historial-y-exploración) | Modificar `tortilla-de-patatas.md` y leer el historial |
 | [3) Ramas y merge](../README.md#3-ramas-y-merge) | Crear `feature/postres` y mergear a `main` |
 | [4) Rebase y limpieza de historial](../README.md#4-rebase-y-limpieza-de-historial) | Limpiar commits "wip" al agregar una receta |
-| [5) Conflictos](../README.md#5-conflictos-nivel-obligatorio) | El clasico "con cebolla / sin cebolla" |
-| [6) Recuperacion y seguridad](../README.md#6-recuperacion-y-seguridad) | Revertir un ingrediente equivocado, recuperar receta perdida |
-| [7) Trabajo remoto](../README.md#7-trabajo-remoto-y-colaboracion) | Publicar el recetario en GitHub y simular PR |
+| [5) Conflictos](../README.md#5-conflictos-nivel-obligatorio) | El clásico "con cebolla / sin cebolla" |
+| [6) Recuperación y seguridad](../README.md#6-recuperación-y-seguridad) | Revertir un ingrediente equivocado, recuperar receta perdida |
+| [7) Trabajo remoto](../README.md#7-trabajo-remoto-y-colaboración) | Publicar el recetario en GitHub y simular PR |
 | [8) Cherry-pick, tags y releases](../README.md#8-cherry-pick-tags-y-releases) | Portar un fix urgente y etiquetar `v1.0.0` |
 
 ---
 
-## Modulo 1 - Crear una receta nueva (las 3 zonas)
+## Módulo 1 - Crear una receta nueva (las 3 zonas)
 
-**Objetivo:** ver una receta atravesando working tree -> staging -> historial, y verla aparecer en la web automaticamente.
+**Objetivo:** ver una receta atravesando working tree -> staging -> historial, y verla aparecer en la web automáticamente.
 
 ```bash
-# Desde la raiz del repo (git3/)
+# Desde la raíz del repo (git3/)
 
-# 1. Asegurate de tener el dev server corriendo
+# 1. Asegúrate de tener el dev server corriendo
 # en otra terminal:  cd recipes && npm run dev
 
 # 2. Crea la receta nueva (zona 1: working tree, untracked)
@@ -88,7 +88,7 @@ descripcion: "Refrescante, lista en 5 minutos."
 categoria: "bebida"
 tiempo: "5 min"
 porciones: 4
-dificultad: "muy facil"
+dificultad: "muy fácil"
 tags: ["bebida", "refrescante", "verano"]
 ---
 
@@ -96,13 +96,13 @@ tags: ["bebida", "refrescante", "verano"]
 
 - 4 limones
 - 1 litro de agua
-- 4 cucharadas de azucar
+- 4 cucharadas de azúcar
 - Hielo
 
 ## Pasos
 
 1. Exprimir los limones.
-2. Mezclar con el agua y el azucar.
+2. Mezclar con el agua y el azúcar.
 3. Servir con hielo.
 EOF
 
@@ -113,14 +113,14 @@ git commit -m "feat(recetas): agrega receta de limonada"
 git log --oneline
 ```
 
-**Verificacion:**
+**Verificación:**
 
 - `git log --oneline` muestra tu commit nuevo.
-- En el navegador, http://localhost:4321/recetas debe mostrar la limonada bajo categoria "bebida".
+- En el navegador, http://localhost:4321/recetas debe mostrar la limonada bajo categoría "bebida".
 
 ---
 
-## Modulo 2 - Modificar y explorar historial
+## Módulo 2 - Modificar y explorar historial
 
 **Objetivo:** ver `git diff`, `git log` y `git blame` sobre cambios reales.
 
@@ -134,15 +134,15 @@ git diff --staged                                   # ve el cambio ya staged
 git commit -m "fix(tortilla): ajusta cantidad de patatas a 5"
 
 git log --oneline
-git log --stat                                      # cuantas lineas cambiaron
-git log --patch -n 1                                # el diff del ultimo commit
+git log --stat                                      # cuántas líneas cambiaron
+git log --patch -n 1                                # el diff del último commit
 git show HEAD                                       # contenido completo
 git blame recipes/src/content/recetas/tortilla-de-patatas.md
 ```
 
 ---
 
-## Modulo 3 - Ramas y merge: agregar postres
+## Módulo 3 - Ramas y merge: agregar postres
 
 **Objetivo:** trabajar en una rama aparte y mergear sin pisar `main`.
 
@@ -153,27 +153,27 @@ git switch -c feature/postres
 cat > recipes/src/content/recetas/flan.md << 'EOF'
 ---
 title: "Flan casero"
-descripcion: "Postre clasico con caramelo. Ideal para sobremesa."
+descripcion: "Postre clásico con caramelo. Ideal para sobremesa."
 categoria: "postre"
 tiempo: "1 h"
 porciones: 6
 dificultad: "media"
-tags: ["postre", "huevos", "clasico"]
+tags: ["postre", "huevos", "clásico"]
 ---
 
 ## Ingredientes
 
 - 6 huevos
 - 500 ml de leche
-- 200 g de azucar
+- 200 g de azúcar
 - 1 cucharadita de esencia de vainilla
 
 ## Pasos
 
-1. Caramelizar la mitad del azucar en una flanera.
-2. Batir los huevos con el resto del azucar, la leche y la vainilla.
+1. Caramelizar la mitad del azúcar en una flanera.
+2. Batir los huevos con el resto del azúcar, la leche y la vainilla.
 3. Verter sobre el caramelo.
-4. Hornear al bano maria 50 minutos a 170 grados.
+4. Hornear al baño maría 50 minutos a 170 grados.
 5. Enfriar antes de desmoldar.
 EOF
 git add . && git commit -m "feat(postres): agrega flan casero"
@@ -182,11 +182,11 @@ git add . && git commit -m "feat(postres): agrega flan casero"
 cat > recipes/src/content/recetas/brownies.md << 'EOF'
 ---
 title: "Brownies de chocolate"
-descripcion: "Densos, humedos, peligrosos. 25 minutos al horno."
+descripcion: "Densos, húmedos, peligrosos. 25 minutos al horno."
 categoria: "postre"
 tiempo: "40 min"
 porciones: 8
-dificultad: "facil"
+dificultad: "fácil"
 tags: ["postre", "chocolate", "horno"]
 ---
 
@@ -195,13 +195,13 @@ tags: ["postre", "chocolate", "horno"]
 - 200 g de chocolate negro
 - 150 g de mantequilla
 - 3 huevos
-- 150 g de azucar
+- 150 g de azúcar
 - 80 g de harina
 
 ## Pasos
 
-1. Fundir el chocolate con la mantequilla a bano maria.
-2. Batir los huevos con el azucar.
+1. Fundir el chocolate con la mantequilla a baño maría.
+2. Batir los huevos con el azúcar.
 3. Mezclar las dos preparaciones, incorporar la harina.
 4. Verter en molde forrado, hornear 25 min a 180 grados.
 EOF
@@ -209,22 +209,22 @@ git add . && git commit -m "feat(postres): agrega brownies"
 
 # Vuelve a main y mergea con merge commit
 git switch main
-git merge --no-ff feature/postres -m "merge: integra seccion de postres"
+git merge --no-ff feature/postres -m "merge: integra sección de postres"
 git lg
 ```
 
-**Verificacion:** en http://localhost:4321/recetas debe aparecer la nueva categoria "postre" con las 2 recetas.
+**Verificación:** en http://localhost:4321/recetas debe aparecer la nueva categoría "postre" con las 2 recetas.
 
 ---
 
-## Modulo 4 - Rebase interactivo para limpiar historia
+## Módulo 4 - Rebase interactivo para limpiar historia
 
 **Objetivo:** convertir 4 commits "wip" en uno limpio antes de mergear.
 
 ```bash
 git switch -c feature/smoothie
 
-# Hacemos commits sucios a proposito (cada uno deja el .md en estado invalido o incompleto)
+# Hacemos commits sucios a propósito (cada uno deja el .md en estado inválido o incompleto)
 cat > recipes/src/content/recetas/smoothie.md << 'EOF'
 ---
 title: "Smoothie de banana"
@@ -232,7 +232,7 @@ descripcion: "WIP"
 categoria: "bebida"
 tiempo: "5 min"
 porciones: 2
-dificultad: "muy facil"
+dificultad: "muy fácil"
 tags: ["bebida"]
 ---
 
@@ -244,10 +244,10 @@ echo "- 1 banana" >> recipes/src/content/recetas/smoothie.md
 git add . && git commit -m "wip 2"
 
 echo "- 200 ml de leche" >> recipes/src/content/recetas/smoothie.md
-git add . && git commit -m "agrega leche, perdon"
+git add . && git commit -m "agrega leche, perdón"
 
-echo "Licuar y servir frio." >> recipes/src/content/recetas/smoothie.md
-git add . && git commit -m "wip 3 (ultimo)"
+echo "Licuar y servir frío." >> recipes/src/content/recetas/smoothie.md
+git add . && git commit -m "wip 3 (último)"
 
 git log --oneline                                   # 4 commits sucios
 
@@ -262,9 +262,9 @@ git log --oneline                                   # ahora hay UN solo commit
 
 ---
 
-## Modulo 5 - Conflicto: con cebolla o sin cebolla
+## Módulo 5 - Conflicto: con cebolla o sin cebolla
 
-**Objetivo:** provocar y resolver el conflicto mas famoso de la cocina espanola.
+**Objetivo:** provocar y resolver el conflicto más famoso de la cocina española.
 
 ```bash
 git switch main
@@ -275,15 +275,15 @@ git switch -c feature/cebolla-si
 # cambia "- 1 cebolla mediana" por "- 2 cebollas medianas (con cebolla, por supuesto)"
 git add . && git commit -m "feat(tortilla): refuerza cebolla"
 
-# Otro contribuyente edita main al reves
+# Otro contribuyente edita main al revés
 git switch main
-# Edita la misma linea por "- 0 cebollas (la cebolla arruina la tortilla)"
-git add . && git commit -m "fix(tortilla): elimina cebolla, version pura"
+# Edita la misma línea por "- 0 cebollas (la cebolla arruina la tortilla)"
+git add . && git commit -m "fix(tortilla): elimina cebolla, versión pura"
 
 # Intenta mergear: CONFLICTO
 git merge feature/cebolla-si
-# El archivo tendra los marcadores <<<<<<<, =======, >>>>>>>.
-# Editalo a mano, decide el resultado, quita los marcadores.
+# El archivo tendrá los marcadores <<<<<<<, =======, >>>>>>>.
+# Edítalo a mano, decide el resultado, quita los marcadores.
 git add recipes/src/content/recetas/tortilla-de-patatas.md
 git commit                                          # confirma el merge
 ```
@@ -292,74 +292,74 @@ Repite el escenario con `git rebase feature/cebolla-si` para sentir la diferenci
 
 ---
 
-## Modulo 6 - Recuperar trabajo
+## Módulo 6 - Recuperar trabajo
 
 **Objetivo:** deshacer un cambio publicado y rescatar una receta "perdida".
 
 ```bash
 # 1. Commit "malo": agrega un ingrediente equivocado a la pasta
-# Edita pasta-aglio-olio.md y agrega "- 500 g de azucar" en la lista de ingredientes
-git add . && git commit -m "feat(pasta): agrega azucar (mal!)"
+# Edita pasta-aglio-olio.md y agrega "- 500 g de azúcar" en la lista de ingredientes
+git add . && git commit -m "feat(pasta): agrega azúcar (¡mal!)"
 
 # Revertir sin reescribir historia
 git revert HEAD
 # Git crea un commit nuevo que deshace el anterior. La historia queda visible.
 
-# 2. Simula perdida de receta
+# 2. Simula pérdida de receta
 git switch -c feature/te-frio
 cat > recipes/src/content/recetas/te-frio.md << 'EOF'
 ---
-title: "Te frio"
-descripcion: "Sencillo, refrescante, sin azucar agregada."
+title: "Té frío"
+descripcion: "Sencillo, refrescante, sin azúcar agregada."
 categoria: "bebida"
 tiempo: "10 min + reposo"
 porciones: 4
-dificultad: "muy facil"
-tags: ["bebida", "te", "frio"]
+dificultad: "muy fácil"
+tags: ["bebida", "té", "frío"]
 ---
 
 ## Ingredientes
-- 3 bolsitas de te negro
+- 3 bolsitas de té negro
 - 1 litro de agua
 - Hielo
-- Limon
+- Limón
 
 ## Pasos
 1. Hervir el agua, infusionar 5 minutos.
-2. Enfriar, agregar hielo y rodajas de limon.
+2. Enfriar, agregar hielo y rodajas de limón.
 EOF
-git add . && git commit -m "feat(bebidas): agrega te frio"
+git add . && git commit -m "feat(bebidas): agrega té frío"
 
 git switch main
 git branch -D feature/te-frio                       # "borraste" la rama por error
 
 # Recupera con reflog
-git reflog                                          # busca el commit "feat(bebidas): agrega te frio"
+git reflog                                          # busca el commit "feat(bebidas): agrega té frío"
 git switch -c feature/te-frio <hash-encontrado>
-ls recipes/src/content/recetas/te-frio.md           # esta de vuelta
+ls recipes/src/content/recetas/te-frio.md           # está de vuelta
 ```
 
 ---
 
-## Modulo 7 - Trabajo remoto y PRs
+## Módulo 7 - Trabajo remoto y PRs
 
-**Objetivo:** publicar el recetario y simular el flujo de revision.
+**Objetivo:** publicar el recetario y simular el flujo de revisión.
 
 ```bash
-# (Crea un repo vacio en GitHub primero, sin README)
+# (Crea un repo vacío en GitHub primero, sin README)
 git remote add origin https://github.com/tu-usuario/recetario.git
 git push -u origin main
 
-# Crea una rama de feature y subela
+# Crea una rama de feature y súbela
 git switch -c feature/granola
 cat > recipes/src/content/recetas/granola.md << 'EOF'
 ---
 title: "Granola casera"
-descripcion: "Crujiente, dulce, dura semanas en frasco hermetico."
+descripcion: "Crujiente, dulce, dura semanas en frasco hermético."
 categoria: "desayuno"
 tiempo: "35 min"
 porciones: 10
-dificultad: "facil"
+dificultad: "fácil"
 tags: ["desayuno", "horno", "avena"]
 ---
 
@@ -385,29 +385,29 @@ git push -u origin feature/granola
 
 ---
 
-## Modulo 8 - Cherry-pick y release
+## Módulo 8 - Cherry-pick y release
 
-**Objetivo:** llevar un fix puntual a `main` y etiquetar la version `v1.0.0`.
+**Objetivo:** llevar un fix puntual a `main` y etiquetar la versión `v1.0.0`.
 
 ```bash
 git switch -c feature/varios
 
-# Commit 1: fix urgente que SI queremos llevar a main
+# Commit 1: fix urgente que SÍ queremos llevar a main
 # Edita pasta-aglio-olio.md: cambia "60 ml de aceite" por "80 ml de aceite"
 git add . && git commit -m "fix(pasta): aumenta aceite a 80 ml"
 
-# Commit 2: experimento que NO queremos en main aun
-# Edita ensalada-cesar.md y agrega una seccion "## Variante con tofu"
+# Commit 2: experimento que NO queremos en main aún
+# Edita ensalada-cesar.md y agrega una sección "## Variante con tofu"
 git add . && git commit -m "wip: experimento con tofu"
 
 # Encuentra el hash del fix
 git log --oneline
 
-# Llevalo a main sin traer el experimento
+# Llévalo a main sin traer el experimento
 git switch main
 git cherry-pick <hash-del-fix>
 
-# Cuando el recetario este listo, taggea v1.0.0
+# Cuando el recetario esté listo, taggea v1.0.0
 git tag -a v1.0.0 -m "Primer release del recetario"
 git push origin v1.0.0
 git show v1.0.0
@@ -415,9 +415,9 @@ git show v1.0.0
 
 ---
 
-## Modulo extra - Agregar un menu (combinacion de recetas)
+## Módulo extra - Agregar un menú (combinación de recetas)
 
-**Objetivo:** practicar Git tocando codigo de la web, no solo Markdown.
+**Objetivo:** practicar Git tocando código de la web, no solo Markdown.
 
 ```bash
 git switch -c feature/menu-cena-vegetariana
@@ -431,26 +431,26 @@ git switch -c feature/menu-cena-vegetariana
 #     recetas: ['ensalada-cesar', 'pasta-aglio-olio'],
 #   },
 
-git add . && git commit -m "feat(menus): agrega menu vegetariano"
-# El menu aparece en http://localhost:4321/menus
+git add . && git commit -m "feat(menus): agrega menú vegetariano"
+# El menú aparece en http://localhost:4321/menus
 ```
 
 ---
 
 ## Checklist del recetario
 
-Marca cada uno cuando lo hayas hecho aqui mismo:
+Marca cada uno cuando lo hayas hecho aquí mismo:
 
-- [ ] Agregue una receta nueva con frontmatter valido y la vi en http://localhost:4321/recetas
-- [ ] Edite una receta y revise el cambio con `git diff`
-- [ ] Cree una rama de postres y la mergee con `--no-ff`
-- [ ] Limpie 4 commits "wip" con rebase interactivo
-- [ ] Resolvi el conflicto cebolla-si vs cebolla-no
-- [ ] Revoque un commit con `git revert`
-- [ ] Recupere una receta perdida con `reflog`
-- [ ] Publique una rama en remoto y abri un PR
-- [ ] Lleve un fix puntual con `cherry-pick`
-- [ ] Etiquete una version con `git tag -a`
-- [ ] Agregue un menu nuevo modificando `src/pages/menus.astro`
+- [ ] Agregué una receta nueva con frontmatter válido y la vi en http://localhost:4321/recetas
+- [ ] Edité una receta y revisé el cambio con `git diff`
+- [ ] Creé una rama de postres y la mergeé con `--no-ff`
+- [ ] Limpié 4 commits "wip" con rebase interactivo
+- [ ] Resolví el conflicto cebolla-sí vs cebolla-no
+- [ ] Revoqué un commit con `git revert`
+- [ ] Recuperé una receta perdida con `reflog`
+- [ ] Publiqué una rama en remoto y abrí un PR
+- [ ] Llevé un fix puntual con `cherry-pick`
+- [ ] Etiqueté una versión con `git tag -a`
+- [ ] Agregué un menú nuevo modificando `src/pages/menus.astro`
 
-Cuando todo este marcado, ya domas Git con un proyecto real entre manos.
+Cuando todo esté marcado, ya domas Git con un proyecto real entre manos.

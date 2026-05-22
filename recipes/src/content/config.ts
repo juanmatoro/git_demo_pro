@@ -9,7 +9,7 @@ const recetas = defineCollection({
     categoria: z.enum(['entrante', 'principal', 'postre', 'bebida', 'desayuno']),
     tiempo: z.string(),
     porciones: z.number(),
-    dificultad: z.enum(['muy facil', 'facil', 'media', 'dificil']),
+    dificultad: z.enum(['muy fácil', 'fácil', 'media', 'difícil']),
     tags: z.array(z.string()).default([]),
     publicado: z.boolean().default(true),
   }),

@@ -4,8 +4,8 @@ const { pathname } = Astro.url;
 const links = [
   { href: '/', label: 'Inicio' },
   { href: '/recetas', label: 'Recetas' },
-  { href: '/menus', label: 'Menus' },
-  { href: '/practicas', label: 'Practicas Git' },
+  { href: '/menus', label: 'Menús' },
+  { href: '/practicas', label: 'Prácticas Git' },
   { href: '/astro', label: 'Aprende Astro' },
 ];
 
@@ -16,7 +16,7 @@ function isActive(href: string) {
 ---
 
 <nav class="nav">
-  <a href="/" class="logo">Recetario de GIT</a>
+  <a href="/" class="logo">Recetario de Git</a>
   <ul>
     {links.map(({ href, label }) => (
       <li>
