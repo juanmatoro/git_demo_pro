@@ -2,6 +2,7 @@
 title: "Bruschetta clásica"
 descripcion: "Pan tostado con tomate, albahaca y aceite. La esencia del verano italiano."
 categoria: "entrante"
+imagen: 'https://picsum.photos/seed/bruschetta/800/400'
 tiempo: "10 min"
 porciones: 4
 dificultad: "muy fácil"

@@ -2,6 +2,7 @@
 title: "Tortilla de patatas"
 descripcion: "Clásico español. Sencillo, barato y con margen para los conflictos de merge (con cebolla o sin cebolla)."
 categoria: "principal"
+imagen: 'https://picsum.photos/seed/tortilla-de-patatas/800/400'
 tiempo: "30 min"
 porciones: 4
 dificultad: "fácil"

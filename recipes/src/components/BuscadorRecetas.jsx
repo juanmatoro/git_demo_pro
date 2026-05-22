@@ -35,14 +35,23 @@ export default function BuscadorRecetas({ recetas }) {
       {filtradas.length === 0 ? (
         <p class="sin-resultados">No se encontraron recetas.</p>
       ) : (
-        <ul>
+        <div class="grid">
           {filtradas.map((r) => (
-            <li key={r.slug}>
-              <a href={`${base}/recetas/${r.slug}`}>{r.title}</a>
-              <span class="cat"> · {r.categoria}</span>
-            </li>
+            <a href={`${base}/recetas/${r.slug}`} class="card" key={r.slug}>
+              <img
+                class="card-img"
+                src={r.imagen || `https://picsum.photos/seed/${r.slug}/400/300`}
+                alt={r.title}
+                loading="lazy"
+              />
+              <div class="card-body">
+                <h3 class="card-title">{r.title}</h3>
+                <span class="card-cat">{r.categoria}</span>
+                <p class="card-desc">{r.descripcion}</p>
+              </div>
+            </a>
           ))}
-        </ul>
+        </div>
       )}
     </div>
   );

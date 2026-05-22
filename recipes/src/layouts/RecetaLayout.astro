@@ -11,14 +11,17 @@ interface Props {
   porciones: number;
   dificultad: string;
   tags: string[];
+  imagen?: string;
 }
 
-const { title, descripcion, categoria, tiempo, porciones, dificultad, tags } = Astro.props;
+const { title, descripcion, categoria, tiempo, porciones, dificultad, tags, imagen } = Astro.props;
 ---
 
 <Layout title={title} descripcion={descripcion}>
   <article class="receta">
     <a href={`${base}/recetas`} class="volver">&larr; volver a recetas</a>
+
+    {imagen && <img src={imagen} alt={title} class="portada" />}
 
     <header class="receta-header">
       <h1>{title}</h1>
@@ -55,6 +58,14 @@ const { title, descripcion, categoria, tiempo, porciones, dificultad, tags } = A
 
   .volver:hover {
     text-decoration: underline;
+  }
+
+  .portada {
+    width: 100%;
+    max-height: 320px;
+    object-fit: cover;
+    border-radius: 8px;
+    margin-bottom: 20px;
   }
 
   .receta-header {

@@ -11,8 +11,10 @@ const categorias = [...new Set(todas.map((r) => r.data.categoria))].sort();
 const recetas = todas.map((r) => ({
   slug: r.id.replace(/\.md$/, ''),
   title: r.data.title,
+  descripcion: r.data.descripcion,
   categoria: r.data.categoria,
   tags: r.data.tags,
+  imagen: r.data.imagen,
 }));
 ---
 

@@ -2,6 +2,7 @@
 title: "Caprese"
 descripcion: "Mozzarella fresca, tomate y albahaca: los colores de Italia en un plato."
 categoria: "entrante"
+imagen: 'https://picsum.photos/seed/caprese/800/400'
 tiempo: "10 min"
 porciones: 2
 dificultad: "muy fácil"

@@ -2,6 +2,7 @@
 title: "Paella valenciana"
 descripcion: "Arroz bomba con pollo, conejo y verduras. El plato más emblemático de la cocina española."
 categoria: "principal"
+imagen: 'https://picsum.photos/seed/paella-valenciana/800/400'
 tiempo: "60 min"
 porciones: 6
 dificultad: "media"

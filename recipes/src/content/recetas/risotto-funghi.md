@@ -2,6 +2,7 @@
 title: "Risotto ai funghi"
 descripcion: "Arroz cremoso con setas y parmesano. El alma de la cocina del norte de Italia."
 categoria: "principal"
+imagen: 'https://picsum.photos/seed/risotto-funghi/800/400'
 tiempo: "35 min"
 porciones: 4
 dificultad: "media"

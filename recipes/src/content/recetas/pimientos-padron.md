@@ -2,6 +2,7 @@
 title: "Pimientos de Padrón"
 descripcion: "Pimientos fritos con sal gorda. Unos pican y otros no, la ruleta gallega."
 categoria: "entrante"
+imagen: 'https://picsum.photos/seed/pimientos-padron/800/400'
 tiempo: "10 min"
 porciones: 4
 dificultad: "muy fácil"

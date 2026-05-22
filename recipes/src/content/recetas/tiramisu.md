@@ -2,6 +2,7 @@
 title: "Tiramisú"
 descripcion: "Postre italiano de café, mascarpone y cacao. Cremoso, sin horno y adictivo."
 categoria: "postre"
+imagen: 'https://picsum.photos/seed/tiramisu/800/400'
 tiempo: "30 min + reposo"
 porciones: 8
 dificultad: "fácil"
