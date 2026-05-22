@@ -1,10 +1,22 @@
 ---
 import Layout from '../layouts/Layout.astro';
+import GeneradorMenu from '../components/GeneradorMenu';
 import { getCollection } from 'astro:content';
 
 const base = import.meta.env.BASE_URL;
 const recetas = await getCollection('recetas', ({ data }) => data.publicado);
 const recetasById = new Map(recetas.map((r) => [r.id, r]));
+
+const recetasData = recetas.map((r) => ({
+  slug: r.id,
+  title: r.data.title,
+  descripcion: r.data.descripcion,
+  categoria: r.data.categoria,
+  tiempo: r.data.tiempo,
+  dificultad: r.data.dificultad,
+  tags: r.data.tags,
+  imagen: r.data.imagen,
+}));
 
 interface Menu {
   nombre: string;
@@ -30,10 +42,12 @@ const menus: Menu[] = [
   <header>
     <h1>Menús sugeridos</h1>
     <p>
-      Combinaciones de recetas para una comida completa. Esta página es una buena
-      excusa para practicar Git: agrega tu propio menú en una rama de feature.
+      Combinaciones de recetas para una comida completa. También puedes generar menús aleatorios
+      con la isla interactiva de abajo.
     </p>
   </header>
+
+  <GeneradorMenu recetas={recetasData} client:load />
 
   <section class="menus">
     {menus.map((menu) => (

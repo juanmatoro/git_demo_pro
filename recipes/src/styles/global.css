@@ -147,3 +147,80 @@ code {
   margin: 4px 0 0;
   line-height: 1.4;
 }
+
+.generador-menu {
+  background: #fff;
+  border: 1px solid #e6dfd2;
+  border-radius: 8px;
+  padding: 20px;
+  margin-bottom: 28px;
+}
+
+.acciones {
+  display: flex;
+  gap: 10px;
+  margin-bottom: 20px;
+}
+
+.acciones button {
+  background: #c97b3c;
+  color: #fff;
+  border: none;
+  padding: 10px 20px;
+  border-radius: 6px;
+  font-family: inherit;
+  font-size: 0.95rem;
+  cursor: pointer;
+  transition: background 0.15s;
+}
+
+.acciones button:hover {
+  background: #b0682e;
+}
+
+.menu-dia h2,
+.menu-semana h2 {
+  margin: 0 0 14px;
+  color: #5a3a1f;
+  border: none;
+  padding: 0;
+}
+
+.menu-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+  gap: 12px;
+}
+
+.receta-card {
+  position: relative;
+  padding: 14px;
+}
+
+.receta-label {
+  font-size: 0.7rem;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: #c97b3c;
+  font-weight: bold;
+}
+
+.menu-semana .dia {
+  margin-bottom: 10px;
+  border: 1px solid #e6dfd2;
+  border-radius: 6px;
+  padding: 8px 14px;
+  background: #fbf8f3;
+}
+
+.menu-semana summary {
+  cursor: pointer;
+  font-weight: bold;
+  color: #5a3a1f;
+  font-size: 1rem;
+  padding: 4px 0;
+}
+
+.menu-semana .dia[open] .menu-grid {
+  margin-top: 10px;
+}
