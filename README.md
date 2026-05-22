@@ -1,4 +1,4 @@
-# Git a Profundidad - Laboratorio de Aprendizaje
+ # Git en Profundidad - Laboratorio de Aprendizaje
 
 Este repositorio esta pensado como un espacio de practica para dominar Git de forma progresiva, desde fundamentos hasta flujos avanzados de colaboracion.
 
@@ -28,6 +28,7 @@ Este repositorio esta pensado como un espacio de practica para dominar Git de fo
   - [6) Recuperacion y seguridad](#6-recuperacion-y-seguridad)
   - [7) Trabajo remoto y colaboracion](#7-trabajo-remoto-y-colaboracion)
   - [8) Cherry-pick, tags y releases](#8-cherry-pick-tags-y-releases)
+- [Aprende Astro con el recetario (guia aparte)](recipes/ASTRO.md)
 - [Tabla de comandos esenciales del dia a dia](#tabla-de-comandos-esenciales-del-dia-a-dia)
   - [Configuracion e inicio](#configuracion-e-inicio)
   - [Estado y revision](#estado-y-revision)
@@ -206,19 +207,38 @@ Si responder estas preguntas te resulta natural, ya entendes el modelo. Lo que s
 
 > Regla del laboratorio: si rompes algo, no borres el repo. Resuelvelo con Git. Ese es el verdadero ejercicio.
 
-### Sandbox practico: el Recetario
+### Sandbox practico: el Recetario (mini-app Astro)
 
-Este repo incluye un **mini-recetario** ([recipes/](recipes/)) que sirve como banco de pruebas real para cada modulo. En vez de practicar con archivos abstractos `archivo1.txt`, vas a:
+Este repo incluye un **mini-recetario web** ([recipes/](recipes/)) hecho con **Astro** (sobre Vite) que sirve como banco de pruebas real para cada modulo. La app lee las recetas desde archivos Markdown (`recipes/src/content/recetas/*.md`), asi cada vez que agregas o modificas una receta, la veras reflejada en el navegador.
 
-- Agregar postres en una rama de feature.
+**Arranque rapido:**
+
+```bash
+cd recipes
+npm install
+npm run dev          # abre http://localhost:4321
+```
+
+Paginas disponibles: `/` (inicio), `/recetas` (listado por categoria), `/recetas/<slug>` (cada receta), `/menus` (combinaciones), `/practicas` (guia de Git renderizada), `/astro` (guia de Astro renderizada).
+
+**Que vas a practicar:**
+
+- Agregar postres en una rama de feature y verlos aparecer en `/recetas`.
 - Resolver el conflicto clasico "con cebolla o sin cebolla" en la tortilla.
 - Limpiar 4 commits "wip" del smoothie con rebase interactivo.
 - Recuperar una receta de te frio "perdida" con `reflog`.
+- Tocar codigo de la web (no solo .md) agregando un menu en `src/pages/menus.astro`.
 - Etiquetar `v1.0.0` cuando tu libro de cocina este listo.
 
-Cada ejercicio del recetario esta mapeado a su modulo correspondiente en
+Cada ejercicio esta mapeado a su modulo correspondiente en
 [recipes/PRACTICAS.md](recipes/PRACTICAS.md). Empezar por ahi te ahorra inventar
 ejemplos a mano.
+
+Si ademas quieres aprender **como esta hecha esta app** (Astro, renderizado
+estatico/dinamico y especialmente las islas dinamicas), tenes una guia aparte
+en [recipes/ASTRO.md](recipes/ASTRO.md). Esa guia usa el mismo sandbox: las
+recetas, el listado y el buscador son los ejemplos sobre los que practicas
+islas e hidratacion.
 
 ## Requisitos
 
