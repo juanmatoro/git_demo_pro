@@ -1,10 +1,12 @@
-# Pasta aglio e olio
-
-> Plato italiano minimalista: ajo, aceite, pasta. Ideal para una cena rapida.
-
-- **Tiempo total:** 15 min
-- **Porciones:** 2
-- **Dificultad:** muy facil
+---
+title: "Pasta aglio e olio"
+descripcion: "Plato italiano minimalista: ajo, aceite, pasta. Ideal para una cena rapida."
+categoria: "principal"
+tiempo: "15 min"
+porciones: 2
+dificultad: "muy facil"
+tags: ["italiano", "pasta", "vegetariano", "rapido"]
+---
 
 ## Ingredientes
 

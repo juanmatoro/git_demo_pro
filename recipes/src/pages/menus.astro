@@ -1,0 +1,144 @@
+---
+import Layout from '../layouts/Layout.astro';
+import { getCollection } from 'astro:content';
+
+const recetas = await getCollection('recetas', ({ data }) => data.publicado);
+const recetasById = new Map(recetas.map((r) => [r.id, r]));
+
+interface Menu {
+  nombre: string;
+  descripcion: string;
+  recetas: string[];
+}
+
+const menus: Menu[] = [
+  {
+    nombre: 'Cena italiana rapida',
+    descripcion: 'Para una noche entre semana sin complicaciones.',
+    recetas: ['ensalada-cesar', 'pasta-aglio-olio'],
+  },
+  {
+    nombre: 'Domingo en casa',
+    descripcion: 'Plato contundente para sobremesa larga.',
+    recetas: ['ensalada-cesar', 'tortilla-de-patatas'],
+  },
+];
+---
+
+<Layout title="Menus">
+  <header>
+    <h1>Menus sugeridos</h1>
+    <p>
+      Combinaciones de recetas para una comida completa. Esta pagina es una buena
+      excusa para practicar Git: agrega tu propio menu en una rama de feature.
+    </p>
+  </header>
+
+  <section class="menus">
+    {menus.map((menu) => (
+      <article class="menu">
+        <h2>{menu.nombre}</h2>
+        <p class="desc">{menu.descripcion}</p>
+
+        <ol class="recetas">
+          {menu.recetas.map((id) => {
+            const receta = recetasById.get(id);
+            if (!receta) {
+              return (
+                <li class="missing">Receta no encontrada: <code>{id}</code></li>
+              );
+            }
+            return (
+              <li>
+                <a href={`/recetas/${receta.id}`}>{receta.data.title}</a>
+                <span class="meta">{receta.data.tiempo} &middot; {receta.data.dificultad}</span>
+              </li>
+            );
+          })}
+        </ol>
+      </article>
+    ))}
+  </section>
+
+  <section class="tip">
+    <h2>Ejercicio Git sugerido</h2>
+    <p>
+      Crea una rama <code>feature/menu-cena-vegetariana</code>, agrega un menu nuevo en
+      este archivo (<code>src/pages/menus.astro</code>), commit, push y abre un PR.
+      Cuando lo mergees, los menus apareceran aqui automaticamente.
+    </p>
+  </section>
+</Layout>
+
+<style>
+  .menus {
+    display: grid;
+    gap: 18px;
+  }
+
+  .menu {
+    background: #fff;
+    border: 1px solid #e6dfd2;
+    border-radius: 6px;
+    padding: 16px 18px;
+  }
+
+  .menu h2 {
+    margin: 0 0 4px;
+    color: #c97b3c;
+    border: none;
+    padding: 0;
+  }
+
+  .desc {
+    color: #6b6b6b;
+    font-style: italic;
+    margin: 0 0 12px;
+  }
+
+  .recetas {
+    margin: 0;
+    padding-left: 20px;
+  }
+
+  .recetas li {
+    margin-bottom: 6px;
+  }
+
+  .recetas a {
+    color: #5a3a1f;
+    text-decoration: none;
+    font-weight: bold;
+  }
+
+  .recetas a:hover {
+    color: #c97b3c;
+    text-decoration: underline;
+  }
+
+  .meta {
+    color: #888;
+    font-size: 0.85rem;
+    margin-left: 6px;
+  }
+
+  .missing {
+    color: #b03a2e;
+    font-style: italic;
+  }
+
+  .tip {
+    margin-top: 28px;
+    background: #fff8ee;
+    border-left: 4px solid #c97b3c;
+    padding: 12px 16px;
+    border-radius: 0 6px 6px 0;
+  }
+
+  .tip h2 {
+    margin-top: 0;
+    border: none;
+    padding: 0;
+    color: #5a3a1f;
+  }
+</style>

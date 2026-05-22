@@ -1,0 +1,32 @@
+---
+import Nav from '../components/Nav.astro';
+import '../styles/global.css';
+
+interface Props {
+  title: string;
+  descripcion?: string;
+}
+
+const { title, descripcion = 'Recetario casero - sandbox para practicar Git' } = Astro.props;
+---
+
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description" content={descripcion} />
+    <title>{title} | Recetario de Git</title>
+  </head>
+  <body>
+    <div class="contenedor">
+      <Nav />
+      <main>
+        <slot />
+      </main>
+      <footer>
+        <p>Hecho como excusa para aprender Git. Rompelo, recuperalo, ramifica sin miedo.</p>
+      </footer>
+    </div>
+  </body>
+</html>

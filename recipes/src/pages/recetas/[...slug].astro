@@ -1,0 +1,27 @@
+---
+import { getCollection, render } from 'astro:content';
+import RecetaLayout from '../../layouts/RecetaLayout.astro';
+
+export async function getStaticPaths() {
+  const recetas = await getCollection('recetas', ({ data }) => data.publicado);
+  return recetas.map((receta) => ({
+    params: { slug: receta.id },
+    props: { receta },
+  }));
+}
+
+const { receta } = Astro.props;
+const { Content } = await render(receta);
+---
+
+<RecetaLayout
+  title={receta.data.title}
+  descripcion={receta.data.descripcion}
+  categoria={receta.data.categoria}
+  tiempo={receta.data.tiempo}
+  porciones={receta.data.porciones}
+  dificultad={receta.data.dificultad}
+  tags={receta.data.tags}
+>
+  <Content />
+</RecetaLayout>

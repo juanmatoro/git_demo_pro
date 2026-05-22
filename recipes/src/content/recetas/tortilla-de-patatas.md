@@ -1,10 +1,12 @@
-# Tortilla de patatas
-
-> Receta clasica espa&ntilde;ola. Sencilla, barata y con margen para los conflictos de merge (¿con cebolla o sin cebolla?).
-
-- **Tiempo total:** 30 min
-- **Porciones:** 4
-- **Dificultad:** facil
+---
+title: "Tortilla de patatas"
+descripcion: "Clasico espanol. Sencillo, barato y con margen para los conflictos de merge (con cebolla o sin cebolla)."
+categoria: "principal"
+tiempo: "30 min"
+porciones: 4
+dificultad: "facil"
+tags: ["espanol", "huevos", "vegetariano"]
+---
 
 ## Ingredientes
 

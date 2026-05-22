@@ -1,0 +1,83 @@
+---
+import Layout from '../layouts/Layout.astro';
+import { Content } from '../../PRACTICAS.md';
+---
+
+<Layout title="Practicas de Git">
+  <article class="prosa">
+    <Content />
+  </article>
+</Layout>
+
+<style>
+  .prosa :global(h1) {
+    color: #c97b3c;
+    margin-top: 0;
+  }
+
+  .prosa :global(h2) {
+    color: #5a3a1f;
+    border-left: 4px solid #c97b3c;
+    padding-left: 10px;
+    margin-top: 32px;
+  }
+
+  .prosa :global(h3) {
+    color: #5a3a1f;
+    margin-top: 24px;
+  }
+
+  .prosa :global(table) {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 16px 0;
+  }
+
+  .prosa :global(th),
+  .prosa :global(td) {
+    border: 1px solid #e6dfd2;
+    padding: 8px 12px;
+    text-align: left;
+  }
+
+  .prosa :global(th) {
+    background: #fff8ee;
+    color: #5a3a1f;
+  }
+
+  .prosa :global(pre) {
+    background: #2b2b2b;
+    color: #f1ece2;
+    padding: 14px 16px;
+    border-radius: 6px;
+    overflow-x: auto;
+    font-size: 0.85rem;
+  }
+
+  .prosa :global(code) {
+    background: #f1ece2;
+    color: #5a3a1f;
+    padding: 1px 6px;
+    border-radius: 3px;
+    font-size: 0.9rem;
+  }
+
+  .prosa :global(pre code) {
+    background: transparent;
+    color: inherit;
+    padding: 0;
+  }
+
+  .prosa :global(blockquote) {
+    border-left: 4px solid #c97b3c;
+    background: #fff8ee;
+    margin: 16px 0;
+    padding: 8px 14px;
+    color: #5a3a1f;
+    font-style: italic;
+  }
+
+  .prosa :global(a) {
+    color: #c97b3c;
+  }
+</style>

@@ -1,0 +1,136 @@
+---
+import Layout from './Layout.astro';
+
+interface Props {
+  title: string;
+  descripcion: string;
+  categoria: string;
+  tiempo: string;
+  porciones: number;
+  dificultad: string;
+  tags: string[];
+}
+
+const { title, descripcion, categoria, tiempo, porciones, dificultad, tags } = Astro.props;
+---
+
+<Layout title={title} descripcion={descripcion}>
+  <article class="receta">
+    <a href="/recetas" class="volver">&larr; volver a recetas</a>
+
+    <header class="receta-header">
+      <h1>{title}</h1>
+      <p class="descripcion">{descripcion}</p>
+
+      <dl class="meta">
+        <div><dt>Categoria</dt><dd>{categoria}</dd></div>
+        <div><dt>Tiempo</dt><dd>{tiempo}</dd></div>
+        <div><dt>Porciones</dt><dd>{porciones}</dd></div>
+        <div><dt>Dificultad</dt><dd>{dificultad}</dd></div>
+      </dl>
+
+      {tags.length > 0 && (
+        <ul class="tags">
+          {tags.map((tag) => <li>#{tag}</li>)}
+        </ul>
+      )}
+    </header>
+
+    <div class="cuerpo">
+      <slot />
+    </div>
+  </article>
+</Layout>
+
+<style>
+  .volver {
+    display: inline-block;
+    margin-bottom: 16px;
+    color: #c97b3c;
+    text-decoration: none;
+    font-size: 0.9rem;
+  }
+
+  .volver:hover {
+    text-decoration: underline;
+  }
+
+  .receta-header {
+    border-bottom: 1px solid #e6dfd2;
+    padding-bottom: 16px;
+    margin-bottom: 20px;
+  }
+
+  .descripcion {
+    color: #6b6b6b;
+    font-style: italic;
+    margin: 8px 0 16px;
+  }
+
+  .meta {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+    gap: 12px;
+    background: #fff;
+    border: 1px solid #e6dfd2;
+    border-radius: 6px;
+    padding: 12px;
+    margin: 0 0 12px;
+  }
+
+  .meta div {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .meta dt {
+    font-size: 0.75rem;
+    color: #888;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+  }
+
+  .meta dd {
+    margin: 2px 0 0;
+    font-weight: bold;
+    color: #5a3a1f;
+  }
+
+  .tags {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 6px;
+  }
+
+  .tags li {
+    background: #f1ece2;
+    color: #5a3a1f;
+    padding: 3px 10px;
+    border-radius: 12px;
+    font-size: 0.8rem;
+  }
+
+  .cuerpo :global(h2) {
+    color: #5a3a1f;
+    border-left: 4px solid #c97b3c;
+    padding-left: 10px;
+    margin-top: 28px;
+  }
+
+  .cuerpo :global(h3) {
+    color: #5a3a1f;
+    margin-top: 20px;
+  }
+
+  .cuerpo :global(ul),
+  .cuerpo :global(ol) {
+    padding-left: 24px;
+  }
+
+  .cuerpo :global(li) {
+    margin-bottom: 4px;
+  }
+</style>

@@ -1,10 +1,12 @@
-# Ensalada cesar
-
-> Clasico de bar. Crujiente, salado, contundente. Buena para practicar commits separados (lechuga, salsa, pollo en commits distintos).
-
-- **Tiempo total:** 20 min
-- **Porciones:** 2
-- **Dificultad:** facil
+---
+title: "Ensalada cesar"
+descripcion: "Clasico de bar. Crujiente, salado, contundente. Buena para practicar commits separados."
+categoria: "entrante"
+tiempo: "20 min"
+porciones: 2
+dificultad: "facil"
+tags: ["ensalada", "pollo", "queso"]
+---
 
 ## Ingredientes
 
@@ -40,4 +42,4 @@
 ## Notas
 
 - Si las anchoas no son de tu agrado, reducir la cantidad. Aportan el toque umami.
-- Los crutones caseros se preparan con pan duro cortado en cubos, aceite y horno 10 min a 180&deg;C.
+- Los crutones caseros se preparan con pan duro cortado en cubos, aceite y horno 10 minutos a 180 grados.
