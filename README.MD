@@ -206,6 +206,20 @@ Si responder estas preguntas te resulta natural, ya entendes el modelo. Lo que s
 
 > Regla del laboratorio: si rompes algo, no borres el repo. Resuelvelo con Git. Ese es el verdadero ejercicio.
 
+### Sandbox practico: el Recetario
+
+Este repo incluye un **mini-recetario** ([recipes/](recipes/)) que sirve como banco de pruebas real para cada modulo. En vez de practicar con archivos abstractos `archivo1.txt`, vas a:
+
+- Agregar postres en una rama de feature.
+- Resolver el conflicto clasico "con cebolla o sin cebolla" en la tortilla.
+- Limpiar 4 commits "wip" del smoothie con rebase interactivo.
+- Recuperar una receta de te frio "perdida" con `reflog`.
+- Etiquetar `v1.0.0` cuando tu libro de cocina este listo.
+
+Cada ejercicio del recetario esta mapeado a su modulo correspondiente en
+[recipes/PRACTICAS.md](recipes/PRACTICAS.md). Empezar por ahi te ahorra inventar
+ejemplos a mano.
+
 ## Requisitos
 
 - Git instalado (`git --version`, idealmente 2.30+)
@@ -244,47 +258,162 @@ git config --global --list
 
 ## 1) Fundamentos del repositorio
 
-### Conceptos clave
+### ¿Que es un repositorio? (en simple)
 
-- **Working tree**: tus archivos tal como los ves en el disco.
-- **Staging area (index)**: la "sala de espera" donde Git prepara el proximo commit.
-- **Historial (HEAD y commits)**: la cadena de fotos del proyecto a lo largo del tiempo.
-- **Estados de un archivo**:
-  - *Untracked*: Git no lo conoce.
-  - *Tracked / unmodified*: Git lo conoce y esta igual al ultimo commit.
-  - *Modified*: cambio pero todavia no esta en staging.
-  - *Staged*: listo para entrar en el proximo commit.
+Un **repositorio** (o "repo") es una carpeta normal de tu computadora con un superpoder: dentro tiene una subcarpeta oculta llamada `.git` que guarda **toda la historia del proyecto**.
 
-### Ejercicio guiado
+Piensa en esta analogia:
+
+> Tu proyecto es una **cocina**.
+> Cocinas platos (archivos), los modificas, los pruebas.
+> El **repositorio** es esa misma cocina, pero con una **camara de seguridad** instalada (`.git/`) que va tomando fotos cada vez que tu decides "este plato esta listo".
+> Si manana quemas la comida, podes mirar la grabacion y volver al momento en que todo estaba bien.
+
+Sin `.git/`, es solo una carpeta. Con `.git/`, es un repositorio.
+
+### Como se crea un repositorio (ejemplo minimo)
 
 ```bash
-# Crea una carpeta de practica DENTRO del repo
+mkdir mi-proyecto              # creas una carpeta normal
+cd mi-proyecto
+git init                       # AHORA es un repositorio
+ls -la                         # veras una carpeta oculta ".git"
+```
+
+Eso es todo. La diferencia entre "una carpeta cualquiera" y "un repositorio" son **esos 8 caracteres**: `git init`.
+
+### Las 3 zonas de un repositorio
+
+Cuando trabajas con Git, tus archivos viven en **3 zonas distintas** al mismo tiempo. Entender estas zonas es lo mas importante del modulo.
+
+```
+┌────────────────────┐    git add     ┌──────────────────┐   git commit   ┌─────────────────┐
+│   1. WORKING TREE  │  ───────────►  │ 2. STAGING AREA  │ ─────────────► │  3. HISTORIAL   │
+│  (donde trabajas)  │                │   (preparacion)  │                │  (.git/objects) │
+└────────────────────┘                └──────────────────┘                └─────────────────┘
+       tus archivos                       el "carrito"                       las fotos
+        visibles                          de compras                         guardadas
+```
+
+#### Zona 1: Working tree (el escritorio)
+
+Son los archivos que **ves y editas**. Si abres el explorador de archivos, son esos.
+
+> Analogia: la **mesa de tu cocina** donde tenes los ingredientes y vas cocinando. Puedes mover, cortar, ensuciar lo que quieras. No es definitivo.
+
+#### Zona 2: Staging area (el carrito de compras)
+
+Es una **sala de espera** donde pones los archivos que quieres incluir en el proximo commit. No estan guardados todavia, pero ya estan "elegidos".
+
+> Analogia: el **carrito del supermercado**. Pusiste cosas adentro, pero todavia no pagaste. Podes sacarlas, agregar otras, o ir a la caja.
+
+Comando para mover algo aqui: `git add archivo`.
+
+#### Zona 3: Historial (la caja fuerte)
+
+Cuando haces `git commit`, lo que estaba en el carrito se **guarda para siempre** como una foto del proyecto (un commit). Esa foto vive dentro de `.git/` y ya no se borra facil.
+
+> Analogia: el **album de fotos** donde pegaste la foto del plato terminado. Aunque manana cambies la receta, esa foto sigue ahi.
+
+Comando: `git commit -m "mensaje"`.
+
+### Los 4 estados de un archivo
+
+Un archivo dentro del repo puede estar en uno de cuatro estados. Esto es lo que te dice `git status`:
+
+| Estado | Que significa | Ejemplo |
+| --- | --- | --- |
+| **Untracked** | Git ve el archivo pero nunca lo guardo. No lo esta vigilando | Acabas de crear `notas.md` y nunca hiciste `git add` |
+| **Unmodified** | Git lo conoce y esta igual a la ultima foto guardada | Abriste `app.js` pero no lo tocaste |
+| **Modified** | Git lo conoce, pero lo cambiaste desde la ultima foto | Editaste `app.js` y lo guardaste |
+| **Staged** | Esta en el carrito, listo para entrar en el proximo commit | Hiciste `git add app.js` |
+
+### Flujo de vida de un archivo (visualmente)
+
+```
+   creas un archivo nuevo
+            │
+            ▼
+       UNTRACKED ──────── git add ──────────┐
+                                            ▼
+                                         STAGED ──── git commit ───┐
+                                            ▲                      │
+                                            │                      ▼
+                                       git add                 UNMODIFIED
+                                            │                      │
+                                            │                      │
+                                            └──── MODIFIED ◄── (editas el archivo)
+```
+
+Lectura: un archivo nace untracked. Cuando lo agregas con `git add`, pasa a staged. Cuando lo commiteas, queda guardado y vuelve a unmodified. Si lo editas, pasa a modified, y vuelve a la zona de staging cuando hagas `git add` otra vez.
+
+### ¿Que hay dentro de la carpeta .git?
+
+Cuando ejecutas `ls -la` dentro de un repositorio, veras `.git/`. No la borres nunca: **es el repositorio**. La carpeta de tu proyecto sin `.git/` es solo una carpeta cualquiera.
+
+Contenido principal (no hace falta memorizar):
+
+| Archivo/carpeta dentro de `.git/` | Que guarda |
+| --- | --- |
+| `HEAD` | Un archivo que dice "ahora mismo estoy parado en la rama X" |
+| `refs/heads/` | Un archivo por rama. Cada uno solo contiene un hash de commit |
+| `objects/` | Todas las fotos (commits), carpetas (trees) y contenidos (blobs) |
+| `config` | La configuracion especifica de este repo (nombre, remotes, etc.) |
+| `index` | El "carrito" (staging area), en binario |
+| `logs/` | El reflog: cada movimiento de HEAD |
+
+### Ejercicio guiado: ver las 3 zonas en accion
+
+Vamos a tocar las 3 zonas y verlas cambiar paso a paso.
+
+```bash
+# 1. Inicializa un repo de practica
 mkdir lab-01 && cd lab-01
+git init
 
-# Crea tres archivos
+# 2. Mira el estado inicial: repo vacio
+git status
+# -> "No commits yet" y nada para mostrar
+
+# 3. Crea un archivo. AHORA esta en la ZONA 1 (working tree), estado: untracked
 echo "hola" > saludo.txt
+git status
+# -> saludo.txt aparece bajo "Untracked files"
+
+# 4. Movelo a la ZONA 2 (staging). Estado: staged
+git add saludo.txt
+git status
+# -> ahora aparece bajo "Changes to be committed"
+
+# 5. Crea un segundo archivo y dejalo SIN agregar
 echo "console.log('hi')" > app.js
-echo "# Notas" > notas.md
+git status
+# -> saludo.txt esta staged, app.js esta untracked. ¡Conviven 2 estados!
 
-git status                # los 3 aparecen como untracked
-git add saludo.txt        # solo uno pasa a staged
-git status                # observa la diferencia
+# 6. Commitea solo el primero: pasa a la ZONA 3 (historial)
 git commit -m "feat: agrega saludo inicial"
+git status
+# -> saludo.txt desaparece (esta en unmodified), app.js sigue untracked
 
-# Pasa los otros dos en commits separados
-git add app.js
-git commit -m "feat: agrega script base de app"
-git add notas.md
-git commit -m "docs: inicia notas de practica"
+# 7. Edita saludo.txt: vuelve a modified
+echo "hola mundo" > saludo.txt
+git status
+# -> saludo.txt aparece como "modified"
 
+# 8. Mira la historia
 git log --oneline
 ```
 
+Si entiendes por que cada `git status` muestra lo que muestra en cada paso, dominas el modelo de las 3 zonas.
+
 ### Preguntas para responder solo
 
-1. ¿Que diferencia hay entre `git add archivo` y `git add .`?
-2. Si modificas `saludo.txt` despues de hacer `git add`, ¿que muestra `git status`? ¿Por que?
-3. ¿Como deshaces `git add` sin perder los cambios? (pista: `git restore --staged`)
+1. ¿Cual es la diferencia entre una "carpeta normal" y un "repositorio"?
+2. Si borras la carpeta `.git/` por error, ¿que pasa con tu proyecto?
+3. ¿En que zona vive un archivo despues de `git add` pero antes de `git commit`?
+4. ¿Que diferencia hay entre `git add archivo` y `git add .`?
+5. Si modificas `saludo.txt` despues de hacer `git add`, ¿que muestra `git status`? ¿Por que?
+6. ¿Como deshaces `git add` sin perder los cambios? (pista: `git restore --staged`)
 
 ---
 
